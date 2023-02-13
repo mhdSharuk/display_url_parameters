@@ -2,6 +2,9 @@
 <html>
   <head>
     <style>
+      /* body {
+        background-color:gray
+      } */
       h1 {
         text-align: center;
         margin-top: 30px;
@@ -14,7 +17,7 @@
       .parameter {
         display: flex;
         justify-content: space-between;
-        width: 50%;
+        width: 25%;
         margin: 20px 0;
         padding: 10px;
         border: 5px solid black;
@@ -56,7 +59,7 @@
 
         parametersDiv.innerHTML += `
             <div class="parameter">
-            <p>Request Token : <span>${request_token}</span></p>
+            <p>Request Token</p>
             <button class="copy-button" onclick="copyToClipboard('${request_token}')">Copy</button>
             </div>`
 

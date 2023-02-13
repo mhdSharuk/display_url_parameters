@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      h1 {
+        text-align: center;
+        margin-top: 30px;
+      }
+      .parameters {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .parameter {
+        display: flex;
+        justify-content: space-between;
+        width: 50%;
+        margin: 20px 0;
+        padding: 10px;
+        border: 5px solid black;
+        border-radius: 5px;
+      }
+      .parameter p {
+        margin: 0;
+      }
+      .copy-button {
+        background-color: #FD7F20;
+        color: black;
+        border: none;
+        border-radius: 5px;
+        padding: 2px 10px;
+        cursor: pointer;
+      }
+      span {
+        background-color: #E2EFDE;
+        padding:10px;
+        margin-top:10px
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Authorize</h1>
+    <div class="parameters" id="parameters"></div>
+
+    <script>
+        // Get the URL parameters
+        const url = document.URL
+        const request_token = url.split('?')[1].split('&')[0].split('=')[1];
+        console.log('URL', url)
+        console.log('REQUEST TOKEN', request_token)
+
+        // Get the parameters div
+        const parametersDiv = document.getElementById("parameters");
+
+        // Loop through the parameters and add them to the div
+
+        parametersDiv.innerHTML += `
+            <div class="parameter">
+            <p>Request Token : <span>${request_token}</span></p>
+            <button class="copy-button" onclick="copyToClipboard('${request_token}')">Copy</button>
+            </div>`
+
+        // Function to copy text to the clipboard
+        function copyToClipboard(text) {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand("copy");
+            textArea.remove();
+        }
+    </script>
+  </body>
+</html>
